@@ -1,40 +1,40 @@
 .header {
-  background-color: #fff;
-  border-bottom: 1px solid var(--gray-light);
-}
-
-.container {
+  background-color: var(--inputs);
+  border-bottom: 1px solid var(--badges);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 24px 64px;
+  width: 100%;
+  padding: 24px 0;
+  position: relative;
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 24px;
-  color: var(--main);
-}
-
-.logo span {
-  color: var(--button);
+  position: absolute;
+  left: 64px;
+  transform: translateY(-50%);
 }
 
 .nav {
   display: flex;
+  flex-grow: 0;
   gap: 32px;
 }
 
 .link {
+  font-family: var(--font-inter);
+  font-weight: 500;
   font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
   color: var(--main);
   transition: color 0.2s ease;
 }
 
 .link:hover {
-  color: var(--button);
+  color: var(--button-hover);
 }
 
 .active {
-  color: var(--button);
+  color: var(--button-hover);
 }

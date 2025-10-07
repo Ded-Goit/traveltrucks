@@ -1,21 +1,18 @@
 .hero {
   text-align: center;
   background: url('/banner.png') center/cover no-repeat;
-  /*min-width: 1440px;
-  height: 696px;*/
 }
 
 .herocontent {
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 260px 805px 260px 64px;
+  padding: 260px 790px 260px 79px;
 }
 
-/*.title {
-  color: var(--inputs);
-}*/
-
+.title {
+  white-space: nowrap;
+}
 .subject {
   margin-top: 16px;
   margin-bottom: 40px;
