@@ -1,0 +1,40 @@
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 64px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--main);
+}
+
+.logo span {
+  color: var(--button);
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.link {
+  font-size: 16px;
+  color: var(--main);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--button);
+}
+
+.active {
+  color: var(--button);
+}

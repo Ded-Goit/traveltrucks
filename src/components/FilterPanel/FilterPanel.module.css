@@ -1,0 +1,35 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input {
+  background: url('/icons/map.svg') no-repeat 12px center;
+  background-size: 18px 18px;
+  padding-left: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 40px;
+  width: 100%;
+}
+
+.equipment,
+.type {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search {
+  width: 100%;
+  height: 44px;
+  background: var(--button);
+  border-radius: 200px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+.search:hover {
+  background: var(--button-hover);
+}

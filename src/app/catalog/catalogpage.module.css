@@ -1,0 +1,52 @@
+.catalog {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 64px;
+}
+
+.listWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.loadMore {
+  margin-top: 32px;
+  padding: 12px 32px;
+  background-color: var(--button);
+  color: #fff;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loadMore:hover {
+  background-color: var(--button-hover);
+}
+
+.error {
+  color: #e44848;
+  font-weight: 600;
+}
+
+.empty {
+  color: var(--text);
+  margin-top: 20px;
+}
