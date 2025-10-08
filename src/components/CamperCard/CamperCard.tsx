@@ -62,42 +62,51 @@ export function CamperCard({ camper }: CamperCardProps) {
           className={styles.image}
           priority
         />
-
-        {/* Кнопка "в обране" */}
-        <button
-          className={`${styles.favoriteBtn} ${isFavorite ? styles.active : ''}`}
-          onClick={() => toggleFavorite(camper.id)}
-          title={isFavorite ? 'Видалити з обраного' : 'Додати в обране'}
-        >
-          <Image
-            src={isFavorite ? '/icons/heart_pressed.svg' : '/icons/heart.svg'}
-            alt="favorite"
-            width={24}
-            height={24}
-          />
-        </button>
       </div>
 
       {/* Інформація про кемпер */}
       <div className={styles.info}>
-        <div className={styles.topRow}>
-          <h3 className={styles.name}>{camper.name}</h3>
-          <p className={styles.price}>{formatPrice(camper.price)}</p>
+        <div>
+          <div className={styles.topRow}>
+            <h2>{camper.name}</h2>
+            <div className={styles.priceRow}>
+              <h2>{formatPrice(camper.price)}</h2>
+              {/* Кнопка "в обране" */}
+              <button
+                className={`${styles.favoriteBtn} ${isFavorite ? styles.active : ''}`}
+                onClick={() => toggleFavorite(camper.id)}
+                title={isFavorite ? 'Видалити з обраного' : 'Додати в обране'}
+              >
+                <Image
+                  src={
+                    isFavorite ? '/icons/heart_pressed.svg' : '/icons/heart.svg'
+                  }
+                  alt="favorite"
+                  width={24}
+                  height={24}
+                />
+              </button>
+            </div>
+          </div>
+          <div className={styles.rating}>
+            <span>
+              <Image
+                src="/icons/star_pressed.svg"
+                alt="star"
+                width={16}
+                height={16}
+              />{' '}
+              {camper.rating || '4.4'} ({camper.reviews?.length || 2} Reviews)
+            </span>
+            <span>
+              <Image src="/icons/map.svg" alt="map" width={16} height={16} />{' '}
+              {camper.location || 'Kyiv, Ukraine'}
+            </span>
+          </div>
         </div>
-
-        <div className={styles.rating}>
-          <span>
-            ⭐ {camper.rating || '4.4'} ({camper.reviews?.length || 2} Reviews)
-          </span>
-          <span className={styles.location}>
-            📍 {camper.location || 'Kyiv, Ukraine'}
-          </span>
-        </div>
-
         <p className={styles.description}>
-          {camper.description?.slice(0, 70)}...
+          {camper.description?.slice(0, 64)}...
         </p>
-
         {/* Динамічні зручності */}
         <div className={styles.tags}>
           {availableAmenities.map((a) => (
@@ -115,7 +124,6 @@ export function CamperCard({ camper }: CamperCardProps) {
             </span>
           ))}
         </div>
-
         <div className={styles.footer}>
           <Button text="Show more" route={`/catalog/${camper.id}`} />
         </div>

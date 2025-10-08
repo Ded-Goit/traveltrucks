@@ -6,95 +6,92 @@
   overflow: hidden;
   background-color: #fff;
   transition: box-shadow 0.2s ease;
-}
+  padding: 24px;
 
-.card:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-}
+  .card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
 
-.imageWrapper {
-  position: relative;
-  flex-shrink: 0;
-}
+  .imageWrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
 
-.image {
-  object-fit: cover;
-  border-radius: 12px 0 0 12px;
-}
+  .image {
+    object-fit: cover;
+    border-radius: 10px;
+    min-width: 292px;
+  }
 
-.favoriteBtn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+  .favoriteBtn {
+    padding: 4px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
 
-.favoriteBtn:hover {
-  transform: scale(1.1);
-}
+  .favoriteBtn:hover {
+    transform: scale(1.1);
+  }
 
-.active img {
-  filter: drop-shadow(0 0 4px red);
-}
+  .active img {
+    filter: drop-shadow(0 0 4px #e44848);
+  }
 
-.info {
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
 }
 
 .topRow {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.name {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.price {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111;
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .rating {
   display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #555;
-  margin: 8px 0;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .description {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
 }
 
 .tag {
   display: flex;
   align-items: center;
-  background: #f3f4f6;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 13px;
-  color: #333;
+  background: #f2f4f7;
   border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #101828;
   padding: 12px 18px;
 }
 
@@ -105,4 +102,14 @@
 
 .icon {
   margin-right: 8px;
+}
+
+.rating span {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
 }
