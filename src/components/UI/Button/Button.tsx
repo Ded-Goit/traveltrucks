@@ -1,5 +1,6 @@
 'use client';
-import { useRouter } from 'next/navigation';
+
+import Link from 'next/link';
 import styles from './Button.module.css';
 import { FC } from 'react';
 
@@ -7,21 +8,22 @@ interface ButtonProps {
   text: string;
   route?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit';
 }
 
-const Button: FC<ButtonProps> = ({ text, route, onClick }) => {
-  const router = useRouter();
+const Button: FC<ButtonProps> = ({ text, route, onClick, type = 'button' }) => {
+  // Якщо передано route → використовуємо Link (Next.js)
+  if (route) {
+    return (
+      <Link href={route} className={styles.btn}>
+        {text}
+      </Link>
+    );
+  }
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    } else if (route) {
-      router.push(route);
-    }
-  };
-
+  // Якщо є onClick → звичайна кнопка
   return (
-    <button onClick={handleClick} className={styles.btn}>
+    <button onClick={onClick} type={type} className={styles.btn}>
       {text}
     </button>
   );

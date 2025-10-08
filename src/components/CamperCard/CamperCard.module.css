@@ -1,84 +1,108 @@
 .card {
   display: flex;
   gap: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
   background-color: #fff;
-  border-radius: 10px;
-  border: 1px solid var(--gray-light);
-  padding: 24px;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  position: relative;
+  flex-shrink: 0;
 }
 
 .image {
-  border-radius: 10px;
   object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favoriteBtn:hover {
+  transform: scale(1.1);
+}
+
+.active img {
+  filter: drop-shadow(0 0 4px red);
 }
 
 .info {
-  flex: 1;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.header {
+.topRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .price {
-  font-weight: 600;
   font-size: 20px;
-  color: var(--main);
+  font-weight: 700;
+  color: #111;
+}
+
+.rating {
   display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.favorite {
-  font-size: 20px;
-  background: none;
-  color: var(--gray-light);
-}
-
-.favorite.active {
-  color: var(--button);
-}
-
-.location {
+  justify-content: space-between;
   font-size: 14px;
-  color: var(--gray);
+  color: #555;
+  margin: 8px 0;
 }
 
-.desc {
+.description {
   font-size: 14px;
-  color: var(--text);
-  margin: 12px 0;
+  color: #555;
+  margin-bottom: 12px;
 }
 
-.features {
+.tags {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 16px;
 }
 
-.features li {
-  border-radius: 50px;
-  background: var(--badges);
-  padding: 6px 14px;
-  font-size: 14px;
-  color: var(--main);
+.tag {
+  display: flex;
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #333;
+  border-radius: 100px;
+  padding: 12px 18px;
 }
 
-.showMore {
-  width: 150px;
-  height: 44px;
-  background: var(--button);
-  color: #fff;
-  border-radius: 200px;
-  font-weight: 500;
-  cursor: pointer;
+.footer {
+  display: flex;
+  justify-content: flex-start;
 }
-.showMore:hover {
-  background: var(--button-hover);
+
+.icon {
+  margin-right: 8px;
 }

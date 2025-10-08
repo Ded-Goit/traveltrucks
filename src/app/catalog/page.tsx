@@ -1,50 +1,30 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useCampersStore } from '@/store/campersStore';
-import CamperCard from '@/components/CamperCard/CamperCard';
-import FilterPanel from '@/components/FilterPanel/FilterPanel';
-import Loader from '@/components/Loader/Loader';
+import { useCampersStore } from '@/store/useCampersStore';
+import { CamperCard } from '@/components/CamperCard/CamperCard';
+import { CamperFilters } from '@/components/CamperFilters/CamperFilters';
 import styles from './catalogpage.module.css';
 
 export default function CatalogPage() {
-  const { campers, loading, error, fetchCampers, hasMore, loadMore } =
-    useCampersStore();
+  const { campers, fetchCampers, loading, error } = useCampersStore();
 
-  // Отримуємо кемпери при першому рендері
   useEffect(() => {
-    fetchCampers();
+    fetchCampers(true);
   }, [fetchCampers]);
 
   return (
-    <section className={styles.catalog}>
-      <div className={styles.container}>
-        <FilterPanel />
+    <div className={styles.wrapper}>
+      <CamperFilters />
 
-        <div className={styles.listWrapper}>
-          {loading && <Loader />}
+      <div className={styles.list}>
+        {loading && <p>Завантаження...</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
 
-          {!loading && error && <p className={styles.error}>❌ {error}</p>}
-
-          {!loading && Array.isArray(campers) && campers.length === 0 && (
-            <p className={styles.empty}>No campers found</p>
-          )}
-
-          {!loading && Array.isArray(campers) && campers.length > 0 && (
-            <div className={styles.list}>
-              {campers.map((c) => (
-                <CamperCard key={c.id} camper={c} />
-              ))}
-            </div>
-          )}
-
-          {!loading && hasMore && (
-            <button className={styles.loadMore} onClick={loadMore}>
-              Load More
-            </button>
-          )}
-        </div>
+        {campers.map((camper) => (
+          <CamperCard key={camper.id} camper={camper} />
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

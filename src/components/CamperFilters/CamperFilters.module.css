@@ -1,0 +1,95 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 360px;
+  margin-left: 24px;
+  margin-top: 48px;
+}
+
+/* --- Location --- */
+.locationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--gray-dark);
+}
+
+.locationInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background-color: var(--inputs);
+}
+
+.locationInput input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  color: var(--gray-dark);
+  background-color: var(--inputs);
+}
+
+/* --- Section Titles --- */
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--gray-dark);
+}
+
+/* --- Icon buttons --- */
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+}
+
+.iconButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--gray-light);
+  background-color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 12px;
+  padding: 16px 40px;
+  width: 112px;
+  height: 96px;
+}
+
+.iconButton span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+}
+
+.iconButton:hover {
+  border-color: var(--button-hover);
+}
+
+.active {
+  border-color: var(--button);
+}
+
+/* --- Bottom button --- */
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}

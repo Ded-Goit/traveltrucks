@@ -1,12 +1,13 @@
-import { api } from '@/api/api';
+import { api } from '@/api/campers';
 import { Camper } from '@/types/camper';
 import CamperDetails from '@/components/CamperDetails/CamperDetails';
 
 export default async function CamperDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { data } = await api.get<Camper>(`/campers/${params.id}`);
+  const { id } = await params;
+  const { data } = await api.get<Camper>(`/campers/${id}`);
   return <CamperDetails camper={data} />;
 }

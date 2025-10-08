@@ -1,0 +1,22 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 292px;
+  height: 320px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.image:hover {
+  transform: scale(1.05);
+}

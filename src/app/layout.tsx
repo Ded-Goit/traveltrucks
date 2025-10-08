@@ -7,6 +7,9 @@ import { Inter } from 'next/font/google';
 export const metadata: Metadata = {
   title: 'TravelTrucks — Camper Rentals',
   description: 'Rent campers for travel',
+  icons: {
+    icon: '/cemper.png',
+  },
 };
 
 const inter = Inter({

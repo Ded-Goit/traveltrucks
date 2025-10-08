@@ -1,61 +1,124 @@
 'use client';
-import { formatPrice } from '@/utils/formatPrice';
-import { Camper } from '@/types/camper';
-import styles from './CamperCard.module.css';
-import { useFavoritesStore } from '@/store/favoritesStore';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
-interface Props {
+import Image from 'next/image';
+import { useCampersStore } from '@/store/useCampersStore';
+import type { Camper } from '@/types/camper';
+import Button from '../UI/Button/Button';
+import styles from './CamperCard.module.css';
+import { formatPrice } from '@/utils/formatPrice';
+
+interface CamperCardProps {
   camper: Camper;
 }
 
-export default function CamperCard({ camper }: Props) {
-  const router = useRouter();
-  const { isFavorite, toggleFavorite } = useFavoritesStore();
+export function CamperCard({ camper }: CamperCardProps) {
+  const { favorites, toggleFavorite } = useCampersStore();
+  const isFavorite = favorites.includes(camper.id);
+
+  const imageSrc = camper.gallery?.[0]?.thumb || '/default-camper.jpg';
+
+  const amenities = [
+    { key: 'transmission', label: 'Automatic', icon: '/icons/diagram.svg' },
+    { key: 'AC', label: 'AC', icon: '/icons/wind.svg' },
+    { key: 'engine', label: 'Petrol', icon: '/icons/fuel-pump.svg' },
+    { key: 'kitchen', label: 'Kitchen', icon: '/icons/cup-hot.svg' },
+    { key: 'bathroom', label: 'Bathroom', icon: '/icons/ph_shower.svg' },
+    { key: 'TV', label: 'TV', icon: '/icons/vector.svg' },
+    { key: 'radio', label: 'Radio', icon: '/icons/ui-radios.svg' },
+    {
+      key: 'refrigerator',
+      label: 'Fridge',
+      icon: '/icons/solar_fridge-outline.svg',
+    },
+    {
+      key: 'microwave',
+      label: 'Microwave',
+      icon: '/icons/lucide_microwave.svg',
+    },
+    { key: 'gas', label: 'Gas', icon: '/icons/hugeicons_gas-stove.svg' },
+    { key: 'water', label: 'Water', icon: '/icons/ion_water-outline.svg' },
+  ];
+
+  //  Фільтруємо доступні зручності для конкретного кемпера
+  const availableAmenities = amenities.filter((a) => {
+    if (a.key === 'transmission') {
+      return camper.transmission === 'automatic';
+    }
+    if (a.key === 'engine') {
+      return !!camper.engine;
+    }
+    return camper[a.key as keyof Camper] === true;
+  });
 
   return (
     <div className={styles.card}>
-      <Image
-        src={camper.gallery[0]?.thumb || '/noimage.jpg'}
-        alt={camper.name}
-        width={290}
-        height={310}
-        className={styles.image}
-      />
+      {/* Фото кемпера */}
+      <div className={styles.imageWrapper}>
+        <Image
+          src={imageSrc}
+          alt={camper.name}
+          width={292}
+          height={320}
+          className={styles.image}
+          priority
+        />
 
+        {/* Кнопка "в обране" */}
+        <button
+          className={`${styles.favoriteBtn} ${isFavorite ? styles.active : ''}`}
+          onClick={() => toggleFavorite(camper.id)}
+          title={isFavorite ? 'Видалити з обраного' : 'Додати в обране'}
+        >
+          <Image
+            src={isFavorite ? '/icons/heart_pressed.svg' : '/icons/heart.svg'}
+            alt="favorite"
+            width={24}
+            height={24}
+          />
+        </button>
+      </div>
+
+      {/* Інформація про кемпер */}
       <div className={styles.info}>
-        <div className={styles.header}>
-          <h3>{camper.name}</h3>
-          <div className={styles.price}>
-            {formatPrice(camper.price)}
-            <button
-              onClick={() => toggleFavorite(camper)}
-              className={`${styles.favorite} ${
-                isFavorite(camper.id) ? styles.active : ''
-              }`}
-              aria-label="Add to favorites"
-            >
-              ♥
-            </button>
-          </div>
+        <div className={styles.topRow}>
+          <h3 className={styles.name}>{camper.name}</h3>
+          <p className={styles.price}>{formatPrice(camper.price)}</p>
         </div>
 
-        <p className={styles.location}>{camper.location}</p>
-        <p className={styles.desc}>{camper.description}</p>
+        <div className={styles.rating}>
+          <span>
+            ⭐ {camper.rating || '4.4'} ({camper.reviews?.length || 2} Reviews)
+          </span>
+          <span className={styles.location}>
+            📍 {camper.location || 'Kyiv, Ukraine'}
+          </span>
+        </div>
 
-        <ul className={styles.features}>
-          {camper.AC && <li>AC</li>}
-          {camper.kitchen && <li>Kitchen</li>}
-          {camper.transmission && <li>{camper.transmission}</li>}
-        </ul>
+        <p className={styles.description}>
+          {camper.description?.slice(0, 70)}...
+        </p>
 
-        <button
-          className={styles.showMore}
-          onClick={() => router.push(`/catalog/${camper.id}`)}
-        >
-          Show more
-        </button>
+        {/* Динамічні зручності */}
+        <div className={styles.tags}>
+          {availableAmenities.map((a) => (
+            <span key={a.key} className={styles.tag}>
+              <Image
+                src={a.icon}
+                alt={a.label}
+                width={20}
+                height={20}
+                className={styles.icon}
+              />
+              {a.key === 'engine'
+                ? camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1)
+                : a.label}
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.footer}>
+          <Button text="Show more" route={`/catalog/${camper.id}`} />
+        </div>
       </div>
     </div>
   );
