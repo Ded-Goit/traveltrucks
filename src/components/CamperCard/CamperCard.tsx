@@ -23,7 +23,7 @@ export function CamperCard({ camper }: CamperCardProps) {
     { key: 'engine', label: 'Petrol', icon: '/icons/fuel-pump.svg' },
     { key: 'kitchen', label: 'Kitchen', icon: '/icons/cup-hot.svg' },
     { key: 'bathroom', label: 'Bathroom', icon: '/icons/ph_shower.svg' },
-    { key: 'TV', label: 'TV', icon: '/icons/vector.svg' },
+    { key: 'TV', label: 'TV', icon: '/icons/tv.svg' },
     { key: 'radio', label: 'Radio', icon: '/icons/ui-radios.svg' },
     {
       key: 'refrigerator',

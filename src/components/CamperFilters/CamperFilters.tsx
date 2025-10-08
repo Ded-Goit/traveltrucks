@@ -21,7 +21,7 @@ export function CamperFilters() {
       icon: '/icons/diagram.svg',
     },
     { key: 'kitchen', label: 'Kitchen', icon: '/icons/cup-hot.svg' },
-    { key: 'TV', label: 'TV', icon: '/icons/vector.svg' },
+    { key: 'TV', label: 'TV', icon: '/icons/tv.svg' },
     {
       key: 'bathroom',
       label: 'Bathroom',
