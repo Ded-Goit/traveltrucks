@@ -1,0 +1,11 @@
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.starIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
