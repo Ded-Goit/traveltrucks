@@ -6,6 +6,7 @@ import type { Camper } from '@/types/camper';
 import Button from '../UI/Button/Button';
 import styles from './CamperCard.module.css';
 import { formatPrice } from '@/utils/formatPrice';
+import CamperInfoRow from '../UI/CamperInfoRow/CamperInfoRow';
 
 interface CamperCardProps {
   camper: Camper;
@@ -88,21 +89,12 @@ export function CamperCard({ camper }: CamperCardProps) {
               </button>
             </div>
           </div>
-          <div className={styles.rating}>
-            <span>
-              <Image
-                src="/icons/star_pressed.svg"
-                alt="star"
-                width={16}
-                height={16}
-              />{' '}
-              {camper.rating || '4.4'} ({camper.reviews?.length || 2} Reviews)
-            </span>
-            <span>
-              <Image src="/icons/map.svg" alt="map" width={16} height={16} />{' '}
-              {camper.location || 'Kyiv, Ukraine'}
-            </span>
-          </div>
+
+          <CamperInfoRow
+            rating={camper.rating}
+            reviewsCount={camper.reviews.length}
+            location={camper.location}
+          />
         </div>
         <p className={styles.description}>
           {camper.description?.slice(0, 64)}...

@@ -1,0 +1,35 @@
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  color: #101828;
+}
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ratingText {
+  color: #101828;
+  font-weight: 500;
+}
+
+.locationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6c717b;
+}
+
+.icon {
+  display: block;
+}
+
+.locationText {
+  white-space: nowrap;
+}

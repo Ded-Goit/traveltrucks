@@ -6,6 +6,7 @@ import type { Camper } from '@/types/camper';
 import styles from './CamperDetails.module.css';
 import DatePickerInput from '../UI/DatePickerInput/DatePickerInput';
 import StarRating from '../UI/StarRating/StarRating';
+import CamperInfoRow from '../UI/CamperInfoRow/CamperInfoRow';
 
 interface CamperDetailsProps {
   camper: Camper;
@@ -43,34 +44,11 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
     <section className={styles.details}>
       <div className={styles.header}>
         <h2 className={styles.name}>{camper.name}</h2>
-        <div className={styles.infoRow}>
-          <span className={styles.rating}>
-            <Image
-              src="/icons/star_pressed.svg"
-              alt="Star"
-              width={16}
-              height={16}
-              className={styles.smallIcon}
-            />
-            <span className={styles.ratingNumber}>
-              {camper.rating.toFixed(1)}
-            </span>
-            <span className={styles.reviewCount}>
-              ({camper.reviews?.length || 0} Reviews)
-            </span>
-          </span>
-
-          <span className={styles.location}>
-            <Image
-              src="/icons/map.svg"
-              alt="Location"
-              width={16}
-              height={16}
-              className={styles.smallIcon}
-            />
-            <span>{camper.location}</span>
-          </span>
-        </div>
+        <CamperInfoRow
+          rating={camper.rating}
+          reviewsCount={camper.reviews.length}
+          location={camper.location}
+        />
         <p className={styles.price}>€{camper.price.toFixed(2)}</p>
       </div>
 

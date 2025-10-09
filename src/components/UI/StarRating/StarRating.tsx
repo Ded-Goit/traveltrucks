@@ -4,11 +4,30 @@ import Image from 'next/image';
 import styles from './StarRating.module.css';
 
 interface StarRatingProps {
-  rating: number; // поточна оцінка (1–5)
-  size?: number; // опціонально — розмір іконки
+  rating: number; // рейтинг (0–5)
+  size?: number; // розмір зірки
+  singleStar?: boolean; // якщо true — показує лише одну зірку
 }
 
-export default function StarRating({ rating, size = 20 }: StarRatingProps) {
+export default function StarRating({
+  rating,
+  size = 20,
+  singleStar = false,
+}: StarRatingProps) {
+  if (singleStar) {
+    return (
+      <div className={styles.stars}>
+        <Image
+          src="/icons/star_pressed.svg"
+          alt="Star"
+          width={size}
+          height={size}
+          className={styles.starIcon}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.stars}>
       {Array.from({ length: 5 }).map((_, i) => (
