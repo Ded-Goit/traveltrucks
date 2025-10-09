@@ -7,6 +7,7 @@ import styles from './CamperDetails.module.css';
 import DatePickerInput from '../UI/DatePickerInput/DatePickerInput';
 import StarRating from '../UI/StarRating/StarRating';
 import CamperInfoRow from '../UI/CamperInfoRow/CamperInfoRow';
+import { AMENITIES } from '@/constants/camperFeatures';
 
 interface CamperDetailsProps {
   camper: Camper;
@@ -18,27 +19,6 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
   );
 
   const gallery = camper.gallery || [];
-  const amenities = [
-    { key: 'AC', label: 'AC', icon: '/icons/wind.svg' },
-    { key: 'transmission', label: 'Automatic', icon: '/icons/diagram.svg' },
-    { key: 'kitchen', label: 'Kitchen', icon: '/icons/cup-hot.svg' },
-    { key: 'TV', label: 'TV', icon: '/icons/tv.svg' },
-    { key: 'bathroom', label: 'Bathroom', icon: '/icons/ph_shower.svg' },
-    { key: 'engine', label: 'Petrol', icon: '/icons/fuel-pump.svg' },
-    { key: 'radio', label: 'Radio', icon: '/icons/ui-radios.svg' },
-    {
-      key: 'refrigerator',
-      label: 'Refrigerator',
-      icon: '/icons/solar_fridge-outline.svg',
-    },
-    {
-      key: 'microwave',
-      label: 'Microwave',
-      icon: '/icons/lucide_microwave.svg',
-    },
-    { key: 'gas', label: 'Gas', icon: '/icons/hugeicons_gas-stove.svg' },
-    { key: 'water', label: 'Water', icon: '/icons/ion_water-outline.svg' },
-  ];
 
   return (
     <section className={styles.details}>
@@ -89,9 +69,8 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
           {activeTab === 'features' ? (
             <>
               <div className={styles.tags}>
-                {amenities.map(({ key, label, icon }) => {
+                {AMENITIES.map(({ key, label, icon }) => {
                   if (!camper[key as keyof typeof camper]) return null;
-
                   return (
                     <span key={key} className={styles.tag}>
                       <Image
