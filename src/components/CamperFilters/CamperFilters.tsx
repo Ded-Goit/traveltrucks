@@ -56,9 +56,9 @@ export function CamperFilters() {
   ];
 
   const vehicleTypes = [
-    { key: 'panel_truck', label: 'Van', icon: '/icons/bi_grid-1x2.svg' },
+    { key: 'panelTruck', label: 'Van', icon: '/icons/bi_grid-1x2.svg' },
     {
-      key: 'fully_integrated',
+      key: 'fullyIntegrated',
       label: 'Fully Integrated',
       icon: '/icons/bi_grid.svg',
     },
@@ -77,9 +77,19 @@ export function CamperFilters() {
 
   const applyFilters = async () => {
     const filters: Record<string, string | boolean> = {};
+
     if (location) filters.location = location;
     if (form) filters.form = form;
-    features.forEach((f) => (filters[f] = true));
+
+    // звичайні фічі (AC, kitchen, bathroom і т.д.)
+    features.forEach((f) => {
+      if (f === 'automatic') {
+        filters.transmission = 'automatic'; // ✅ правильний ключ
+      } else {
+        filters[f] = true;
+      }
+    });
+
     setFilters(filters);
     await fetchCampers(true);
   };

@@ -43,7 +43,7 @@ export const useCampersStore = create<CampersState>()(
           const data = await getCampers({
             ...filters,
             page,
-            limit: 23, // кількість карток на сторінку
+            limit: 4, // кількість карток на сторінку
           });
 
           const campersArray = Array.isArray(data) ? data : [];
@@ -51,6 +51,10 @@ export const useCampersStore = create<CampersState>()(
           set((state) => ({
             campers: reset ? campersArray : [...state.campers, ...campersArray],
             loading: false,
+            total:
+              campersArray.length < 1
+                ? state.campers.length + campersArray.length
+                : state.total,
           }));
         } catch (err) {
           console.error('❌ fetchCampers error:', err);
