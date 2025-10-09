@@ -3,6 +3,7 @@ import 'normalize.css';
 import './globals.css';
 import Header from '@/components/Header/Header';
 import { Inter } from 'next/font/google';
+import GlobalLoader from '@/components/GlobalLoader/GlobalLoader';
 
 export const metadata: Metadata = {
   title: 'TravelTrucks — Camper Rentals',
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={inter.variable}>
         <Header />
         <main>{children}</main>
+        <GlobalLoader />
       </body>
     </html>
   );
