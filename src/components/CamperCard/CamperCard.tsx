@@ -73,7 +73,7 @@ export function CamperCard({ camper }: CamperCardProps) {
 
         {/* Зручності */}
         <div className={styles.tags}>
-          {availableAmenities.map((a) => (
+          {availableAmenities.slice(0, 7).map((a) => (
             <span key={a.key} className={styles.tag}>
               <Image
                 src={a.icon}

@@ -1,12 +1,14 @@
 .card {
+  min-height: 368px;
   display: flex;
+  flex-direction: row;
   gap: 24px;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #fff;
-  transition: box-shadow 0.2s ease;
+  border: 1px solid var(--gray-light);
+  border-radius: 20px;
   padding: 24px;
+  background-color: var(--white);
+  position: relative;
+  max-width: 888px;
 
   .card:hover {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
@@ -18,9 +20,14 @@
   }
 
   .image {
+    width: 100%;
+    max-width: 290px;
+    height: auto;
     object-fit: cover;
+    object-position: center;
+    overflow: hidden;
     border-radius: 10px;
-    min-width: 292px;
+    min-height: 320px;
   }
 
   .favoriteBtn {
@@ -36,7 +43,7 @@
   }
 
   .active img {
-    filter: drop-shadow(0 0 4px #e44848);
+    filter: drop-shadow(0 0 2px var(--button-hover));
   }
 
   .info {
@@ -44,6 +51,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 24px;
+    max-width: 524px;
   }
 }
 
@@ -68,11 +76,9 @@
 }
 
 .description {
-  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #475467;
 }
 
 .tags {
@@ -84,14 +90,12 @@
 .tag {
   display: flex;
   align-items: center;
-  background: #f2f4f7;
+  background: var(--badges);
   border-radius: 100px;
-  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
-  color: #101828;
   padding: 12px 18px;
 }
 
@@ -107,9 +111,7 @@
 .rating span {
   display: flex;
   align-items: center;
-  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #101828;
 }

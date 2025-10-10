@@ -1,10 +1,10 @@
 export const AMENITIES = [
-  { key: 'AC', label: 'AC', icon: '/icons/wind.svg' },
   { key: 'transmission', label: 'Automatic', icon: '/icons/diagram.svg' },
+  { key: 'engine', label: 'Petrol', icon: '/icons/fuel-pump.svg' },
   { key: 'kitchen', label: 'Kitchen', icon: '/icons/cup-hot.svg' },
+  { key: 'AC', label: 'AC', icon: '/icons/wind.svg' },
   { key: 'TV', label: 'TV', icon: '/icons/tv.svg' },
   { key: 'bathroom', label: 'Bathroom', icon: '/icons/ph_shower.svg' },
-  { key: 'engine', label: 'Petrol', icon: '/icons/fuel-pump.svg' },
   { key: 'radio', label: 'Radio', icon: '/icons/ui-radios.svg' },
   {
     key: 'refrigerator',
