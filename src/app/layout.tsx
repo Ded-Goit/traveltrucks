@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header/Header';
 import { Inter } from 'next/font/google';
 import GlobalLoader from '@/components/GlobalLoader/GlobalLoader';
+import CustomCursor from '@/components/UI/CustomCursor/CustomCursor';
 
 export const metadata: Metadata = {
   title: 'TravelTrucks — Camper Rentals',
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <CustomCursor />
         <Header />
         <main>{children}</main>
         <GlobalLoader />

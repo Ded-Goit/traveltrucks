@@ -1,0 +1,75 @@
+/*.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  background-image: url('/car-cursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s linear;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}*/
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url('/car-cursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    filter 0.3s,
+    transform 0.2s;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7))
+    drop-shadow(0 0 16px rgba(255, 215, 0, 0.3));
+}
+
+.cursor.active {
+  background-image: url('/car-cursor-active.png'); /* інше авто, фари, анімація тощо */
+  filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8))
+    drop-shadow(0 0 24px rgba(255, 0, 0, 0.5));
+  transform: scale(1.1) translate(-50%, -50%);
+}
+
+/* світловий шлейф */
+.trail {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: smoke 1s ease-out infinite;
+  opacity: 0.6;
+}
+
+.trail:nth-child(1) {
+  animation-delay: 0s;
+}
+.trail:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.trail:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes smoke {
+  0% {
+    transform: translate(-50%, 0) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, 20px) scale(2);
+    opacity: 0;
+  }
+}
