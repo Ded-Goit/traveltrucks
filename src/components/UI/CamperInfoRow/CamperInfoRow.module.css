@@ -33,3 +33,15 @@
 .locationText {
   white-space: nowrap;
 }
+
+.inlineLocation {
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.inlineLocation .locationWrapper.inline {
+  color: #6c717b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

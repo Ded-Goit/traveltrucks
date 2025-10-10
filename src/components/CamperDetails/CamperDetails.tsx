@@ -28,6 +28,7 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
           rating={camper.rating}
           reviewsCount={camper.reviews.length}
           location={camper.location}
+          inlineLocation
         />
         <p className={styles.price}>€{camper.price.toFixed(2)}</p>
       </div>
@@ -86,8 +87,9 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
                 })}
               </div>
               <div className={styles.detailsBox}>
-                <h4>Vehicle details</h4>
+                <h3>Vehicle details</h3>
                 <ul>
+                  <li></li>
                   <li>
                     <span>Form</span>
                     <span>{camper.form}</span>
@@ -119,12 +121,18 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
             <div className={styles.reviews}>
               {camper.reviews?.map((review, idx) => (
                 <div key={idx} className={styles.reviewCard}>
-                  <div className={styles.avatar}>{review.reviewer_name[0]}</div>
-                  <div className={styles.reviewContent}>
-                    <strong>{review.reviewer_name}</strong>
-                    <StarRating rating={review.reviewer_rating} />
-                    <p>{review.comment}</p>
+                  <div className={styles.reviewHeader}>
+                    <div className={styles.avatar}>
+                      {review.reviewer_name[0]}
+                    </div>
+                    <div className={styles.reviewerInfo}>
+                      <strong className={styles.reviewerName}>
+                        {review.reviewer_name}
+                      </strong>
+                      <StarRating rating={review.reviewer_rating} />
+                    </div>
                   </div>
+                  <p className={styles.comment}>{review.comment}</p>
                 </div>
               ))}
             </div>
@@ -133,7 +141,7 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
 
         {/* RIGHT COLUMN — Booking form */}
         <div className={styles.rightColumn}>
-          <h4>Book your campervan now</h4>
+          <h3>Book your campervan now</h3>
           <p className={styles.subtext}>
             Stay connected! We are always ready to help you.
           </p>
@@ -142,7 +150,7 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
             className={styles.form}
             onSubmit={(e) => {
               e.preventDefault();
-              alert('✅ Camper booked successfully!');
+              alert('Camper booked successfully!');
             }}
           >
             <input type="text" placeholder="Name*" required />
