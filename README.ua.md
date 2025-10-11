@@ -186,7 +186,7 @@ Axios-запити реалізовані у файлах /src/api/campers.ts
 
 ## 👨‍💻 Автор
 
-Andrii Romanov (DED)
+Andrii Romanov (Ded-Goit)
 🔗 https://www.linkedin.com/in/andrii-ded-romanov/
 
 📬 Email: mgm.agro04@gmail.com
