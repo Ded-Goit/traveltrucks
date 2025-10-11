@@ -1,7 +1,11 @@
 .wrapper {
-  flex: 1;
   display: flex;
-  min-width: 1440px;
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  padding: 48px 64px;
+  margin: 0 auto;
+  gap: 64px;
 }
 
 .list {
@@ -9,8 +13,6 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  margin-left: 64px;
-  margin-top: 48px;
 }
 
 .loadMoreContainer {
