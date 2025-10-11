@@ -18,6 +18,46 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
     'features',
   );
 
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    date: null as Date | null,
+    comment: '',
+  });
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!form.name.trim()) newErrors.name = 'Please enter a name.';
+    if (!form.email.trim())
+      newErrors.email = 'Please enter your email address.';
+    else if (!/\S+@\S+\.\S+/.test(form.email))
+      newErrors.email = 'Invalid email format.';
+    if (!form.date) newErrors.date = 'Please select a booking date.';
+    return newErrors;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    setSubmitted(true);
+
+    // Simulate form submission
+    setTimeout(() => {
+      alert('Booking successful!');
+      setForm({ name: '', email: '', date: null, comment: '' });
+      setSubmitted(false);
+    }, 800);
+  };
+
   const gallery = camper.gallery || [];
 
   return (
@@ -89,7 +129,6 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
               <div className={styles.detailsBox}>
                 <h3>Vehicle details</h3>
                 <ul>
-                  <li></li>
                   <li>
                     <span>Form</span>
                     <span>{camper.form}</span>
@@ -146,19 +185,42 @@ export default function CamperDetails({ camper }: CamperDetailsProps) {
             Stay connected! We are always ready to help you.
           </p>
 
-          <form
-            className={styles.form}
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert('Camper booked successfully!');
-            }}
-          >
-            <input type="text" placeholder="Name*" required />
-            <input type="email" placeholder="Email*" required />
-            <DatePickerInput />
-            <textarea placeholder="Comment" rows={3}></textarea>
-            <button type="submit" className={styles.submit}>
-              Send
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Name*"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+            />
+            {errors.name && <p className={styles.error}>{errors.name}</p>}
+
+            <input
+              type="email"
+              placeholder="Email*"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+            />
+            {errors.email && <p className={styles.error}>{errors.email}</p>}
+
+            <DatePickerInput
+              value={form.date}
+              onChange={(date) => setForm({ ...form, date })}
+            />
+            {errors.date && <p className={styles.error}>{errors.date}</p>}
+
+            <textarea
+              placeholder="Comment"
+              rows={3}
+              value={form.comment}
+              onChange={(e) => setForm({ ...form, comment: e.target.value })}
+            />
+
+            <button
+              type="submit"
+              className={styles.submit}
+              disabled={submitted}
+            >
+              {submitted ? 'Sending...' : 'Send'}
             </button>
           </form>
         </div>
