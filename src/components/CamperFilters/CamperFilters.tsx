@@ -14,7 +14,7 @@ export function CamperFilters() {
   const [form, setForm] = useState('');
   const [features, setFeatures] = useState<string[]>([]);
 
-  // Використовуємо лише певні фічі для фільтра
+  // Use only certain features for the filter
   const filterableAmenities = AMENITIES.filter((a) =>
     ['AC', 'transmission', 'kitchen', 'TV', 'bathroom'].includes(a.key),
   );

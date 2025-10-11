@@ -34,7 +34,7 @@ export const useCampersStore = create<CampersState>()(
       loading: false,
       error: null,
 
-      // --- Отримання списку кемперів ---
+      // --- Getting a list of campers ---
       fetchCampers: async (reset = false) => {
         const { filters, page } = get();
         set({ loading: true, error: null });
@@ -43,7 +43,7 @@ export const useCampersStore = create<CampersState>()(
           const data = await getCampers({
             ...filters,
             page,
-            limit: 4, // кількість карток на сторінку
+            limit: 4, // number of cards per page
           });
 
           const campersArray = Array.isArray(data) ? data : [];
@@ -57,12 +57,12 @@ export const useCampersStore = create<CampersState>()(
                 : state.total,
           }));
         } catch (err) {
-          console.error('❌ fetchCampers error:', err);
-          set({ error: 'Не вдалося завантажити кемпери', loading: false });
+          console.error('fetchCampers error:', err);
+          set({ error: 'Nothing was found for your query.', loading: false });
         }
       },
 
-      // --- Отримання одного кемпера за ID ---
+      // --- Getting one camper per ID ---
       fetchCamperById: async (id) => {
         set({ loading: true, error: null });
         try {
@@ -76,12 +76,12 @@ export const useCampersStore = create<CampersState>()(
         }
       },
 
-      // --- Оновлення фільтрів ---
+      // --- Filter updates ---
       setFilters: (filters) => {
         set({ filters, page: 1 });
       },
 
-      // --- Додавання/видалення з обраного ---
+      // --- Add/remove from favorites ---
       toggleFavorite: (id) => {
         set((state) => {
           const isFav = state.favorites.includes(id);
@@ -92,12 +92,12 @@ export const useCampersStore = create<CampersState>()(
         });
       },
 
-      // --- Скидання фільтрів ---
+      // --- Reset filters ---
       clearFilters: () => {
         set({ filters: {}, page: 1 });
       },
 
-      // --- Завантаження наступної сторінки ---
+      // --- Loading next page ---
       loadMore: async () => {
         const nextPage = get().page + 1;
         set({ page: nextPage });
@@ -105,8 +105,8 @@ export const useCampersStore = create<CampersState>()(
       },
     }),
     {
-      name: 'traveltrucks-store', // ключ у localStorage
-      partialize: (state) => ({ favorites: state.favorites }), // зберігаємо лише favorites
+      name: 'traveltrucks-store', // key in localStorage
+      partialize: (state) => ({ favorites: state.favorites }), // we only keep favorites
     },
   ),
 );

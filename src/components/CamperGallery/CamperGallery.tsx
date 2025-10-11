@@ -9,7 +9,7 @@ interface CamperGalleryProps {
 
 export function CamperGallery({ images }: CamperGalleryProps) {
   if (!images || images.length === 0) {
-    return <p>Немає фотографій для цього кемпера.</p>;
+    return <p>There are no photos for this camper.</p>;
   }
 
   return (
@@ -22,7 +22,7 @@ export function CamperGallery({ images }: CamperGalleryProps) {
             width="292"
             height="320"
             className={styles.image}
-            loading={idx === 0 ? 'eager' : 'lazy'} // перше зображення швидше
+            loading={idx === 0 ? 'eager' : 'lazy'} // first image is faster
           />
         </div>
       ))}

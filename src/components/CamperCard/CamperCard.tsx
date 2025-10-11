@@ -22,7 +22,7 @@ export function CamperCard({ camper }: CamperCardProps) {
 
   return (
     <div className={styles.card}>
-      {/* Фото кемпера */}
+      {/* Photo of the camper */}
       <div className={styles.imageWrapper}>
         <Image
           src={imageSrc}
@@ -34,7 +34,7 @@ export function CamperCard({ camper }: CamperCardProps) {
         />
       </div>
 
-      {/* Інформація */}
+      {/* Information */}
       <div className={styles.info}>
         <div>
           <div className={styles.topRow}>
@@ -42,7 +42,7 @@ export function CamperCard({ camper }: CamperCardProps) {
             <div className={styles.priceRow}>
               <h2>{formatPrice(camper.price)}</h2>
 
-              {/* Кнопка "В обране" */}
+              {/* "Add to favorites" button */}
               <button
                 className={`${styles.favoriteBtn} ${isFavorite ? styles.active : ''}`}
                 onClick={() => toggleFavorite(camper.id)}
@@ -71,7 +71,7 @@ export function CamperCard({ camper }: CamperCardProps) {
           {camper.description?.slice(0, 64)}...
         </p>
 
-        {/* Зручності */}
+        {/* Amenities */}
         <div className={styles.tags}>
           {availableAmenities.slice(0, 7).map((a) => (
             <span key={a.key} className={styles.tag}>

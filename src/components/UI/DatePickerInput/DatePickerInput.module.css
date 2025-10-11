@@ -1,19 +1,18 @@
 .wrapper {
   position: relative;
-  /*width: 100%;*/
 }
 
 .calendar {
-  background: #fff !important;
-  border: 1px solid #d0d5dd !important;
+  background: var(--gray-biglight) !important;
+  border: 1px solid var(--text) !important;
   border-radius: 8px !important;
   padding: 8px !important;
   font-family: 'Inter', sans-serif !important;
 }
 
-/* Застосовуємо глобальні стилі до бібліотеки */
+/* Apply global styles to the library */
 :global(.react-datepicker__header) {
-  background-color: #fff !important;
+  background-color: var(--gray-biglight) !important;
   border-bottom: none !important;
   padding-top: 8px !important;
 }
@@ -29,48 +28,48 @@
   text-align: center !important;
 }
 
-/* Заміна назв днів */
+/* Replacing day names */
 :global(.react-datepicker__day-name:nth-child(1)::after) {
   content: 'MON';
-  color: #475467;
+  color: var(--text);
 }
 :global(.react-datepicker__day-name:nth-child(2)::after) {
   content: 'TUE';
-  color: #475467;
+  color: var(--text);
 }
 :global(.react-datepicker__day-name:nth-child(3)::after) {
   content: 'WED';
-  color: #475467;
+  color: var(--text);
 }
 :global(.react-datepicker__day-name:nth-child(4)::after) {
   content: 'THU';
-  color: #475467;
+  color: var(--text);
 }
 :global(.react-datepicker__day-name:nth-child(5)::after) {
   content: 'FRI';
-  color: #475467;
+  color: var(--text);
 }
 :global(.react-datepicker__day-name:nth-child(6)::after) {
   content: 'SAT';
-  color: #475467;
+  color: var(--text);
 }
 :global(.react-datepicker__day-name:nth-child(7)::after) {
   content: 'SUN';
-  color: #475467;
+  color: var(--text);
 }
 
-/* Вибране число */
+/* Selected number */
 :global(.react-datepicker__day--selected),
 :global(.react-datepicker__day--keyboard-selected) {
   border-radius: 32px !important;
   width: 36px !important;
   height: 32px !important;
   line-height: 32px !important;
-  background: #475467 !important;
-  color: #fff !important;
+  background: var(--text) !important;
+  color: var(--gray-biglight) !important;
 }
 
-/* Всі дні */
+/* All days */
 :global(.react-datepicker__day) {
   width: 36px !important;
   height: 32px !important;
@@ -79,7 +78,7 @@
   text-align: center !important;
 }
 
-/* Ефект наведення */
+/* Hover effect */
 :global(.react-datepicker__day:hover) {
   background: #e4e7ec !important;
   border-radius: 32px !important;

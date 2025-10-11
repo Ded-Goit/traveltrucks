@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   gap: 8px;
   font-size: 14px;
-  color: #101828;
+  color: var(--main);
 }
 
 .ratingWrapper {
@@ -15,7 +15,7 @@
 }
 
 .ratingText {
-  color: #101828;
+  color: var(--main);
   font-weight: 500;
 }
 
@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #6c717b;
+  color: var(--gray);
 }
 
 .icon {
@@ -40,7 +40,7 @@
 }
 
 .inlineLocation .locationWrapper.inline {
-  color: #6c717b;
+  color: var(--gray);
   display: flex;
   align-items: center;
   gap: 6px;

@@ -4,9 +4,9 @@ import Image from 'next/image';
 import styles from './StarRating.module.css';
 
 interface StarRatingProps {
-  rating: number; // рейтинг (0–5)
-  size?: number; // розмір зірки
-  singleStar?: boolean; // якщо true — показує лише одну зірку
+  rating: number; // rating (0-5)
+  size?: number; // star size
+  singleStar?: boolean; // if true — shows only one star
 }
 
 export default function StarRating({

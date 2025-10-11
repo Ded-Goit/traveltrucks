@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ text, route, onClick, type = 'button' }) => {
-  // Якщо передано route → використовуємо Link (Next.js)
+  // If route is passed → use Link (Next.js)
   if (route) {
     return (
       <Link href={route} className={styles.btn}>
@@ -21,7 +21,7 @@ const Button: FC<ButtonProps> = ({ text, route, onClick, type = 'button' }) => {
     );
   }
 
-  // Якщо є onClick → звичайна кнопка
+  // If there is onClick → regular button
   return (
     <button onClick={onClick} type={type} className={styles.btn}>
       {text}

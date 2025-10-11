@@ -19,8 +19,8 @@ export default function DatePickerInput() {
         className={styles.input}
         popperPlacement="bottom-start"
         calendarClassName={styles.calendar}
-        minDate={new Date()} // Забороняє минулі дати
-        maxDate={addMonths(new Date(), 6)} // дозволяє вибирати лише в межах 6 місяців
+        minDate={new Date()} // Disallows past dates
+        maxDate={addMonths(new Date(), 6)} // allows selection only within 6 months
       />
     </div>
   );

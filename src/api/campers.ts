@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Camper } from '@/types/camper';
 
-// Створюємо axios instance
+// Creating an axios instance
 export const api = axios.create({
   baseURL: 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io',
   headers: {
@@ -9,7 +9,7 @@ export const api = axios.create({
   },
 });
 
-// ---- Типи для фільтрації ----
+// ---- Types for filtering ----
 export interface CamperFilters {
   location?: string;
   form?: string;
@@ -26,9 +26,9 @@ export interface CamperFilters {
   limit?: number;
 }
 
-// ---- Запити ----
+// ---- Queries ----
 
-// Отримати список кемперів (з фільтрацією на бекенді)
+// Get a list of campers (with backend filtering)
 export const getCampers = async (
   filters?: CamperFilters,
 ): Promise<Camper[]> => {
@@ -47,12 +47,12 @@ export const getCampers = async (
     return data.data;
   }
 
-  // fallback — якщо структура невідома
+  // fallback — if the structure is unknown
   console.warn(' Unexpected API format in getCampers():', data);
   return [];
 };
 
-// Отримати один кемпер за ID
+// Get one camper by ID
 export const getCamperById = async (id: string): Promise<Camper> => {
   const { data } = await api.get<Camper>(`/campers/${id}`);
   return data;
