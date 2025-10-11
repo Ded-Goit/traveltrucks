@@ -75,7 +75,7 @@ export function CamperFilters() {
           </datalist>
         </div>
       </div>
-
+      <p className={styles.text}>Filters</p>
       {/* Equipment */}
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Vehicle equipment</h3>
@@ -84,7 +84,7 @@ export function CamperFilters() {
             <button
               key={a.key}
               type="button"
-              className={`${styles.iconButton} ${
+              className={`${styles.iconButtonEquipment} ${
                 features.includes(a.key) ? styles.active : ''
               }`}
               onClick={() => toggleFeature(a.key)}
@@ -104,7 +104,7 @@ export function CamperFilters() {
             <button
               key={v.key}
               type="button"
-              className={`${styles.iconButton} ${
+              className={`${styles.iconButtonVehicle} ${
                 form === v.key ? styles.active : ''
               }`}
               onClick={() => toggleForm(v.key)}

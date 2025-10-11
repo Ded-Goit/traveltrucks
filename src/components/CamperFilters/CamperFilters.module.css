@@ -40,10 +40,18 @@
 .sectionTitle {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   color: var(--gray-dark);
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-light);
 }
 
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+}
 /* --- Icon buttons --- */
 .iconGrid {
   display: grid;
@@ -51,13 +59,14 @@
   gap: 12px;
 }
 
-.iconButton {
+/* --- Equipment buttons --- */
+.iconButtonEquipment {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border: 1px solid var(--gray-light);
+  border: 1px solid #dadde1;
   background-color: var(--white);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -67,8 +76,25 @@
   height: 96px;
 }
 
-.iconButton span {
-  font-family: 'Inter', sans-serif;
+/* --- Vehicle type buttons --- */
+.iconButtonVehicle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #dadde1;
+  background-color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 10px;
+  padding: 16px 32px;
+  width: 112px;
+  height: 96px;
+}
+
+.iconButtonEquipment span,
+.iconButtonVehicle span {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -77,14 +103,14 @@
   color: var(--main);
 }
 
-.iconButton:hover {
+.iconButtonEquipment:hover,
+.iconButtonVehicle:hover {
   border-color: var(--button-hover);
 }
 
 .active {
   border-color: var(--button);
 }
-
 /* --- Bottom button --- */
 .btnContainer {
   display: flex;
