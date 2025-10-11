@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Camper } from '@/types/camper';
 import { getCampers, getCamperById, type CamperFilters } from '@/api/campers';
+import { handleApiError } from '@/utils/handleApiError';
 
 interface CampersState {
   campers: Camper[];
@@ -20,6 +21,7 @@ interface CampersState {
   toggleFavorite: (id: string) => void;
   clearFilters: () => void;
   loadMore: () => Promise<void>;
+  clearError: () => void;
 }
 
 export const useCampersStore = create<CampersState>()(
@@ -57,8 +59,8 @@ export const useCampersStore = create<CampersState>()(
                 : state.total,
           }));
         } catch (err) {
-          console.error('fetchCampers error:', err);
-          set({ error: 'Nothing was found for your query.', loading: false });
+          const message = handleApiError(err);
+          set({ error: message, loading: false });
         }
       },
 
@@ -68,9 +70,10 @@ export const useCampersStore = create<CampersState>()(
         try {
           const camper = await getCamperById(id);
           set({ selectedCamper: camper, loading: false });
-        } catch {
+        } catch (err) {
+          const message = handleApiError(err);
           set({
-            error: 'Не вдалося завантажити деталі кемпера',
+            error: message || 'Не вдалося завантажити деталі кемпера',
             loading: false,
           });
         }
@@ -103,6 +106,8 @@ export const useCampersStore = create<CampersState>()(
         set({ page: nextPage });
         await get().fetchCampers(false);
       },
+      // --- Error clearing ---
+      clearError: () => set({ error: null }),
     }),
     {
       name: 'traveltrucks-store', // key in localStorage
