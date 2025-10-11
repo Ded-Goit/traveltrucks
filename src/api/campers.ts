@@ -52,6 +52,23 @@ export const getCampers = async (
   return [];
 };
 
+// Отримує унікальні локації з існуючих кемперів
+export const getLocations = async (): Promise<string[]> => {
+  try {
+    const campers = await getCampers();
+
+    // Витягуємо всі location і прибираємо повтори
+    const uniqueLocations = Array.from(
+      new Set(campers.map((c) => c.location?.trim()).filter(Boolean)),
+    );
+
+    return uniqueLocations;
+  } catch (error) {
+    console.error('Failed to load locations:', error);
+    return [];
+  }
+};
+
 // Get one camper by ID
 export const getCamperById = async (id: string): Promise<Camper> => {
   const { data } = await api.get<Camper>(`/campers/${id}`);

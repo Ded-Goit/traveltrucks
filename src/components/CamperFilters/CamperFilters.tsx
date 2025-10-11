@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useCampersStore } from '@/store/useCampersStore';
 import Button from '@/components/UI/Button/Button';
+import { getLocations } from '@/api/campers';
 import { AMENITIES, VEHICLE_TYPES } from '@/constants/camperFeatures';
 import styles from './CamperFilters.module.css';
 
@@ -11,8 +12,17 @@ export function CamperFilters() {
   const { setFilters, fetchCampers, loading } = useCampersStore();
 
   const [location, setLocation] = useState('');
+  const [locations, setLocations] = useState<string[]>([]);
   const [form, setForm] = useState('');
   const [features, setFeatures] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const data = await getLocations();
+      setLocations(data);
+    };
+    fetchLocations();
+  }, []);
 
   // Use only certain features for the filter
   const filterableAmenities = AMENITIES.filter((a) =>
@@ -53,10 +63,16 @@ export function CamperFilters() {
           <Image src="/icons/map.svg" alt="map" width={20} height={20} />
           <input
             type="text"
+            list="cityList"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Kyiv, Ukraine"
           />
+          <datalist id="cityList">
+            {locations.map((city) => (
+              <option key={city} value={city} />
+            ))}
+          </datalist>
         </div>
       </div>
 
