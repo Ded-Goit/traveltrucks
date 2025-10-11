@@ -1,219 +1,223 @@
 # 🚐 Project TravelTrucks
 
-## 📖 Про проєкт
+This is the main README in English.
 
-TravelTrucks — це вебзастосунок для оренди кемперів і будинків на колесах.
-Проєкт створений для компанії, що надає послуги оренди транспорту для подорожей Україною та Європою.
+For Ukrainian version, see [README.ua.md](README.ua.md)
 
-Мета проєкту — надати користувачам простий і сучасний спосіб:
+## 📖 About the Project
 
-🔎 переглядати каталог кемперів із фото, описом і характеристиками;
+TravelTrucks is a web application for renting campers and motorhomes.
+The project is designed for a company providing vehicle rental services for trips across Ukraine and Europe.
 
-🧭 фільтрувати транспорт за локацією, типом і зручностями;
+The goal of the project is to give users a simple and modern way to:
 
-💖 додавати улюблені кемпери до списку “Обране”;
+🔎 Browse a catalog of campers with photos, descriptions, and specifications.
 
-📝 переглядати деталі, читати відгуки та залишати заявку на бронювання.
+🧭 Filter vehicles by location, type, and amenities.
 
-## 🛠 Використані технології
+💖 Add favorite campers to a “Favorites” list.
 
-Next.js 15 (App Router) — сучасний React-фреймворк
+📝 View detailed information, read reviews, and submit booking requests.
 
-TypeScript — типобезпечний код
+## 🛠 Technologies Used
 
-Zustand — легкий і зрозумілий стейт-менеджер
+Next.js 15 (App Router) — modern React framework
 
-Axios — робота з бекендом через HTTP-запити
+TypeScript — type-safe code
 
-CSS Modules / Styled Components — ізольована стилізація компонентів
+Zustand — lightweight state management
 
-React Hook Form + Yup — обробка форм і валідація
+Axios — HTTP requests to backend
 
-React Toastify / Notistack — сповіщення про успіх або помилки
+CSS Modules / Styled Components — scoped component styling
 
-Vercel — деплой фронтенду
+React Hook Form + Yup — forms and validation
+
+React Toastify / Notistack — success and error notifications
+
+Vercel — frontend deployment
 
 ## 🔗 API
 
-Використовується готовий публічний бекенд MockAPI:
+A public MockAPI backend is used:
 👉 https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
 
-Основні ендпоінти:
+Main endpoints:
 
-GET /campers — отримати всі кемпери (фільтрація на бекенді)
+GET /campers — get all campers (backend supports filtering)
 
-GET /campers/:id — отримати деталі конкретного кемпера
+GET /campers/:id — get details of a specific camper
 
-## 🚀 Запуск та розгортання
+## 🚀 Installation & Deployment
 
-1. Клонування репозиторію
+1. Clone the repository:
 
 ```
 git clone https://github.com/Ded-Goit/traveltrucks
-
 cd traveltrucks
 ```
 
-2. Встановлення залежностей
+2. Install dependencies:
 
 ```
 npm install
 ```
 
-3. Запуск у режимі розробки
+3. Run in development mode:
 
 ```
 npm run dev
 ```
 
-Застосунок буде доступний за адресою:
+The app will be available at:
 👉 http://localhost:3000
 
-4. Збірка для продакшну
+4. Build for production:
 
 ```
 npm run build
 npm run start
 ```
 
-## 📂 Структура проєкту
+## 📂 Project Structure
 
 ```
 📦 traveltrucks
-┣ 📂 public — статичні ресурси (зображення, іконки, логотипи)
+┣ 📂 public — static assets (images, icons, logos)
 ┣ 📂 src
-┃ ┣ 📂 api — Axios-запити до бекенду
-┃ ┣ 📂 app — сторінки (Next.js App Router)
-┃ ┃ ┗ 📂 catalog — каталог кемперів /catalog
-┃ ┃   ┗ 📂 catalog/[id] — сторінка деталей /catalog/:id
-┃ ┣ 📂 components — UI-компоненти (карточки, форма, фільтри)
-┃ ┣ 📂 constants — константи
-┃ ┣ 📂 store — Zustand store (глобальний стан)
-┃ ┣ 📂 types — типи TypeScript
-┃ ┗ 📂 utils — утіліти
-┣ 📜 .prettierrc — конфігурація Prettier
-┣ 📜 eslint.config.mjs — ESLint-конфігурація
-┣ 📜 next.config.ts TypeScript-версія конфігураційного файлу Next.js
+┃ ┣ 📂 api — Axios requests to backend
+┃ ┣ 📂 app — pages (Next.js App Router)
+┃ ┃ ┗ 📂 catalog — camper catalog /catalog
+┃ ┃   ┗ 📂 catalog/[id] — camper details /catalog/:id
+┃ ┣ 📂 components — UI components (cards, forms, filters)
+┃ ┣ 📂 constants — constants
+┃ ┣ 📂 store — Zustand global state
+┃ ┣ 📂 types — TypeScript types
+┃ ┗ 📂 utils — utility functions
+┣ 📜 .prettierrc — Prettier config
+┣ 📜 eslint.config.mjs — ESLint config
+┣ 📜 next.config.ts — Next.js config (TypeScript)
 ┣ 📜 package-lock.json
-┣ 📜 package.json — залежності
-┣ 📜 README.md — документація
-┗ 📜 tsconfig.json — конфігурація TypeScript
+┣ 📜 package.json — dependencies
+┣ 📜 README.md — project documentation
+┗ 📜 tsconfig.json — TypeScript config
 ```
 
-## 🧩 Основні сторінки
+## 🧩 Main Pages
 
 ### 🏠 Home Page
 
-Банер з CTA (“Find your perfect camper for the next adventure”)
+Banner with CTA (“Find your perfect camper for the next adventure”)
 
-Кнопка “View Now” → перенаправлення на сторінку /catalog
+“View Now” button → redirects to /catalog
 
 ### 🚐 Catalog Page
 
-Відображає список кемперів
+Displays a list of campers
 
-Фільтри за:
+Filters by:
 
-📍 локацією
+📍 Location
 
-🚗 типом кузова
+🚗 Vehicle type
 
-⚙️ зручностями (AC, kitchen, bathroom тощо)
+⚙️ Amenities (AC, kitchen, bathroom, etc.)
 
-Кнопка Load More для пагінації
+Load More button for pagination
 
-Додавання до обраного (збереження у localStorage)
+Add to favorites (stored in localStorage)
 
 ### 📋 Camper Details Page
 
-Детальний опис, галерея зображень
+Detailed description, image gallery
 
-Вкладки Features і Reviews
+Tabs: Features and Reviews
 
-Форма бронювання з валідацією
+Booking form with validation
 
-повідомлення після успішної відправки
+Notifications after successful submission
 
 ## 🧠 Zustand Store Overview
 
-📍 Основна структура стану:
+📍 State structure:
 
 ```
 interface CamperStore {
-  campers: Camper[];            // усі отримані кемпери
-  selectedCamper: Camper | null;// поточний кемпер для сторінки деталей
-  favorites: string[];          // ID обраних кемперів
-  filters: CamperFilters;       // стан фільтрів (локація, тип, опції)
-  page: number;                 // номер поточної сторінки
-  total: number;                // загальна кількість (якщо є)
-  loading: boolean;             // індикатор запитів
-  error: string | null;         // повідомлення про помилки
+  campers: Camper[];            // all campers
+  selectedCamper: Camper | null;// current camper for details page
+  favorites: string[];          // favorite camper IDs
+  filters: CamperFilters;       // filter state (location, type, options)
+  page: number;                 // current page number
+  total: number;                // total number of campers
+  loading: boolean;             // request loading indicator
+  error: string | null;         // error message
 
-  // Дії (actions)
-  fetchCampers: (reset?: boolean) => Promise<void>; // отримати кемперів (з опцією скидання)
-  fetchCamperById: (id: string) => Promise<void>;   // отримати деталі конкретного кемпера
-  setFilters: (filters: CamperFilters) => void;     // змінити фільтри
-  toggleFavorite: (id: string) => void;             // додати або прибрати з обраного
-  clearFilters: () => void;                         // скинути всі фільтри
-  loadMore: () => Promise<void>;                    // завантажити наступну сторінку
-  clearError: () => void;                           // очистити помилки
+  // Actions
+  fetchCampers: (reset?: boolean) => Promise<void>; // fetch campers (with optional reset)
+  fetchCamperById: (id: string) => Promise<void>;   // fetch a specific camper
+  setFilters: (filters: CamperFilters) => void;    // update filters
+  toggleFavorite: (id: string) => void;            // add/remove favorite
+  clearFilters: () => void;                         // reset all filters
+  loadMore: () => Promise<void>;                    // load next page
+  clearError: () => void;                           // clear error messages
 }
 ```
 
-## ⚙️ Основні принципи:
+## ⚙️ Key Principles
 
-Дані кемперів зберігаються централізовано в Zustand
+Camper data is centralized in Zustand
 
-При зміні фільтрів — очищаються попередні результати
+Changing filters clears previous results
 
-Обране (favorites) зберігається в localStorage
+Favorites are persisted in localStorage
 
-Axios-запити реалізовані у файлах /src/api/campers.ts
+Axios requests are implemented in /src/api/campers.ts
 
-Використовується middleware persist() для збереження стану
+persist() middleware is used to save state
 
-## 📌 Основні вимоги
+## 📌 Requirements
 
-Фільтрація на бекенді (через query params)
+Backend filtering via query params
 
-Збереження обраних кемперів між сесіями
+Favorites persist between sessions
 
-Формат ціни: 8000.00
+Price format: 8000.00
 
-Лоадери та обробка помилок під час запитів
+Loaders and error handling during requests
 
-Компонентна архітектура та принцип DRY
+Component-based architecture, DRY principle
 
-## 👨‍💻 Автор
+## 👨‍💻 Author
 
 Andrii Romanov (DED)
-🔗 https://www.linkedin.com/in/andrii-ded-romanov/
+🔗 LinkedIn
 
 📬 Email: mgm.agro04@gmail.com
 
-## 🚀 Деплой
+## 🚀 Deployment
 
-### Проєкт розгорнутий на Vercel
+### Project is deployed on Vercel
 
 👉 https://traveltrucks-theta.vercel.app/
 
-#### Найпростіший спосіб розгорнути ваш додаток Next.js - це використовувати [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) від творців Next.js.
+#### The easiest way to deploy a Next.js app is using [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) by the creators of Next.js.
 
-#### Перегляньте [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) для отримання додаткової інформації.
+#### For more details, check [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
-## ℹ️ Додаткова інформація
+## ℹ️ Additional Information
 
-Використовується ESLint + Prettier для єдиного стилю коду
+ESLint + Prettier for consistent code style
 
-Підтримується Next.js 15 App Router
+Supports Next.js 15 App Router
 
-Проєкт готовий до подальшого масштабування (наприклад, додавання авторизації чи оплати)
+Project is ready for further scaling (e.g., adding authentication or payments)
 
-### Щоб дізнатися більше про Next.js, перегляньте такі ресурси:
+Learn more about Next.js:
 
-- [Next.js Documentation](https://nextjs.org/docs) - дізнайтеся про функції та API Next.js.
-- [Learn Next.js](https://nextjs.org/learn) - інтерактивний посібник з Next.js.
+Next.js Documentation
 
-#### Ви можете переглянути [the Next.js GitHub repository](https://github.com/vercel/next.js) - ваші відгуки та внески вітаються!
+Learn Next.js
 
-#### Перегляньте [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) для отримання додаткової інформації.
+#### You can also explore [the Next.js GitHub repository](https://github.com/vercel/next.js) — feedback and contributions are welcome!
+
+#### See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more info.
