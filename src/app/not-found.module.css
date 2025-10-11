@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--gray-biglight);
+  color: var(--main);
+  text-align: center;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon {
+  filter: drop-shadow(0 0 8px rgba(228, 72, 72, 0.3));
+}
+
+.main h1 {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--main);
+}
+
+.main p {
+  max-width: 420px;
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.loaderWrapper {
+  margin-top: 16px;
+}
